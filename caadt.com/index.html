@@ -193,9 +193,43 @@
     <script src="js/swapper.js"></script>
     <script>
         $(function () {
+            // //$("header .munuul>li").mouseenter
+            // $("header .munuul>li").bind("mousemove", function () {
+            //     $(this).find("ul").show();
+            // })
+            // $("header .munuul>li").bind("mouseout", function () {
+            //     $(this).find("ul").hide();
+            // })
+            // $("header .munuul .subul").bind("mousemove", function () {
+            //     $(this).show();
+            //     $("header .munuul>li").unbind("mouseout");
+            // })
+            // $("header .munuul .subul").bind("mouseout", function () {
+            //     console.log(4)
+            //     $(this).hide();
+            //     // $("header .munuul>li").bind("mouseout", function () {
+            //     //     $(this).find("ul").hide();
+            //     // })
+            // })
             setInterval(function () {
                 $(".swapper .next").click();
             }, 3000)
+
+
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function () {
+                    navigator.serviceWorker.register('sw.js').then(function (registration) {
+                        // Registration was successful
+                        console.log('ServiceWorker registration successful with scope: ',
+                            registration.scope);
+                    }).catch(function (err) {
+                        // registration failed :(
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+                });
+            }
+
+            
         });
     </script>
 </body>
